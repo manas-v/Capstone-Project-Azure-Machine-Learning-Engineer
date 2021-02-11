@@ -73,7 +73,7 @@ The AutoML configurations used for this experiment are:
 | debug_log | automl_errors.log | The log file to write debug information to |
 
 ### AutoML Results
-After running the AutoML pipeline, the best performing model is found to be VotingEnsemble with an Accuracy value of 0.83328615. VotingEnsemble combines conceptually different machine learning classifiers and uses a majority vote or the average predicted probabilities (soft vote) to predict the class labels. This is method balances out the individual weaknesses of the considered classifiers.
+After running the AutoML pipeline, the best performing model is found to be VotingEnsemble with an AUC_weighted value of 0.83328615. VotingEnsemble combines conceptually different machine learning classifiers and uses a majority vote or the average predicted probabilities (soft vote) to predict the class labels. This is method balances out the individual weaknesses of the considered classifiers.
 
 The AutoML Voting Classifier for this run is made up of a combination of 11 classifiers with different hyperparameter values and normalization/scaling techinques. The 11 estimators used in the run weigh 0.07692307692307693, 0.07692307692307693, 0.07692307692307693, 0.07692307692307693, 0.07692307692307693, 0.07692307692307693, 0.23076923076923078, 0.07692307692307693, 0.07692307692307693, 0.07692307692307693, 0.07692307692307693 respectively.
 
@@ -118,7 +118,7 @@ Best performing model
 
 ### Future work AutoML
 Cross-Validation - Change the number of cross-validation folds in the AutoML run.
-Primary metric - For the given data, the dataset is pretty imbalanced in terms of classes. A primary metric other than accuracy would be more apt for the given scenario i.e. AUC, Precision, Recall.
+Primary metric - Attempting to look at other primary metrics too, incase they are more suitable for the model.
 AutoML configurations - Use different AutoML configurations like experiment timeout, max concurrent iterations, etc, and observe the change in result.
 
 ## Hyperparameter Tuning using HyperDrive
