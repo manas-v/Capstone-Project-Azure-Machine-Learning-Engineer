@@ -51,6 +51,7 @@ The Dataset consists of 35 columns, through which we aim to predict whether an e
 
 ### Access
 The dataset is available on Kaggle as 'IBM HR Analytics Employee Attrition & Performance' dataset, but for this project, the dataset has been uploaded onto GitHub and is accessed through the following URI: 'https://raw.githubusercontent.com/manas-v/Capstone-Project-Azure-Machine-Learning-Engineer/main/WA_Fn-UseC_-HR-Employee-Attrition.csv'
+We then use Tabular Dataset Factory's ```Dataset.Tabular.from_delimited_files()``` to get the data from the url and save it to the datastore by using ```dataset.register()```
 
 ## Automated ML
 AutoML or Automated ML is the process of automating the task of machine learning model development. Using this feature, you can predict the best ML model, and its hyperparameters suited for your problem statement.
