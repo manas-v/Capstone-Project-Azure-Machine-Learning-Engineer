@@ -1,5 +1,7 @@
 # Capstone-Project-Azure-Machine-Learning-Engineer
-This is the final project of the Udacity Azure ML Nanodegree. In this project, we will create two models on the 'IBM HR Analytics Employee Attrition & Performance' dataset: One using Automated ML (denoted as AutoML from now on) and one customized model whose hyperparameters are tuned using HyperDrive. We will then compare the performance of both the models and deploy the best performing model.
+This is the final project of the Udacity Azure ML Nanodegree. 
+
+In this project, we will create two models on the 'IBM HR Analytics Employee Attrition & Performance' dataset: One using Automated ML (denoted as AutoML from now on) and one customized model whose hyperparameters are tuned using HyperDrive. We will then compare the performance of both the models and deploy the best performing model.
 
 ### Project Workflow
 ![image](https://user-images.githubusercontent.com/59551550/107699098-9518cc00-6cdb-11eb-8703-e9ccaf1a7b82.png)
@@ -57,6 +59,7 @@ We then use Tabular Dataset Factory's ```Dataset.Tabular.from_delimited_files()`
 AutoML or Automated ML is the process of automating the task of machine learning model development. Using this feature, you can predict the best ML model, and its hyperparameters suited for your problem statement.
 
 This is a binary classification problem with the label column 'Attrition' having output as 'true' or 'false'. The experiment timeout is 20 mins, a maximum of 5 concurrent iterations take place together, the primary metric for the run is AUC_weighted.
+
 The AutoML configurations used for this experiment are:
 
 | Configuration | Value | Explanation |
@@ -108,23 +111,29 @@ The hyperparameters generated for the model are:
 ### AutoML Screenshots
 
 Output of RunDetails() widget
+
 ![image](https://user-images.githubusercontent.com/59551550/107697334-1ae74800-6cd9-11eb-8f5c-30af874ded1c.png)
 
 Visualization of results
+
 ![image](https://user-images.githubusercontent.com/59551550/107697353-233f8300-6cd9-11eb-8f01-98e8496e0708.png)
 
 Best performing model
+
 ![image](https://user-images.githubusercontent.com/59551550/107697417-34888f80-6cd9-11eb-91c7-d7248761c198.png)
 ![image](https://user-images.githubusercontent.com/59551550/107697497-4ff39a80-6cd9-11eb-84a5-d9e87707bdb7.png)
 
 ### Future work AutoML
 Cross-Validation - Change the number of cross-validation folds in the AutoML run.
+
 Primary metric - Attempting to look at other primary metrics too, incase they are more suitable for the model.
+
 AutoML configurations - Use different AutoML configurations like experiment timeout, max concurrent iterations, etc, and observe the change in result.
 
 ## Hyperparameter Tuning using HyperDrive
 
 Decision Trees (DTs) are a non-parametric supervised learning method used for classification and regression. The goal is to create a model that predicts the value of a target variable by learning simple decision rules inferred from the data features. A tree can be seen as a piecewise constant approximation.
+
 The problem statement being a binary classification problem, the model used in it is the DecisionTreeClassifier. Decision Trees are simple to understand and to interpret, they are easy to visualize, require little data preparation. 
 
 The hyperdrive configuration used for this experiment are as follows:
@@ -144,6 +153,7 @@ In this experiment, the estimator used is SKLearn. An estimator that will be cal
 estimator = SKLearn(source_directory=".", compute_target=cpu_cluster, entry_script="train.py")
 ```
 
+HyperDrive configuration 
 | Configuration | Value | Explanation |
 |    :---:     |     :---:      |     :---:     |
 | hyperparameter_sampling | Value | Explanation |
@@ -168,20 +178,26 @@ The best result using HyperDrive was Decision Tree with Parameter Values as crit
 ### HyperDrive Screenshots
 
 Output of RunDetails() widget
+
 ![image](https://user-images.githubusercontent.com/59551550/107696551-1e2e0400-6cd8-11eb-993f-b7368bee261e.png)
 
 Visualization of results
+
 ![image](https://user-images.githubusercontent.com/59551550/107696666-43227700-6cd8-11eb-82c3-2864a49fcf96.png)
 ![image](https://user-images.githubusercontent.com/59551550/107696758-5d5c5500-6cd8-11eb-96bb-29c0ef459106.png)
 
 Best performing model
+
 ![image](https://user-images.githubusercontent.com/59551550/107697040-b7f5b100-6cd8-11eb-8aa8-5fd802d54e5f.png)
 ![image](https://user-images.githubusercontent.com/59551550/107697155-dc518d80-6cd8-11eb-9cbd-e402988a9e6d.png)
 
 ### Future work HyperDrive
 Model selection - Select a different classification ML algorithm to apply.
+
 Sampling - Other parameter sampling methods to use over the hyperparameter space could be implemented i.e. Grid sampling, Bayesian sampling.
+
 Early termination - Use other early termination policies such as Median stopping policy, Truncation selection policy. Different Early termination policies could be applied to keep the run most time/cost-efficient, yet having the best results.
+
 Resource allocation - Different resource allocation in terms of max_total_runs, max_duration_minutes or max_concurrent_runs for HyperDrive configuration. 
 
 ## Model Deployment
@@ -196,6 +212,7 @@ The workflow for deploying a model to Azure CLI is
 6. Test the resulting web service - You can test the model by querying the endpoint and sending sample input data to get JSON response.
 
 Deployment Healthy
+
 ![image](https://user-images.githubusercontent.com/59551550/107698322-62ba9f00-6cda-11eb-861e-9015135d394e.png)
 
 ## Standout Suggestions
@@ -203,6 +220,7 @@ Deployment Healthy
 Application Insights is used to detect anomalies, visualize performance, etc. It can be enabled before or after a deployment is created. For this experiment, we enable logging for the deployed model by running the logs.py script.
 
 Logging enabled for endpoint
+
 ![image](https://user-images.githubusercontent.com/59551550/107698330-677f5300-6cda-11eb-999d-49e869699264.png)
 
 ## Screen Recording
